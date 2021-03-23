@@ -1,3 +1,10 @@
 language: java
 
-script: mvn clean verify
+addons:
+  sonarcloud:
+    organization: "wronek97org"
+    token:
+      secure: "SONAR_TOKEN"
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
